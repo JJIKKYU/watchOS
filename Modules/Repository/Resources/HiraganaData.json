@@ -1,0 +1,462 @@
+[
+    {
+        "word": "あ",
+        "pronunciation": {
+            "english": "a",
+            "korean": "아"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "a"
+    },
+    {
+        "word": "い",
+        "pronunciation": {
+            "english": "i",
+            "korean": "이"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "a"
+    },
+    {
+        "word": "う",
+        "pronunciation": {
+            "english": "u",
+            "korean": "우"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "a"
+    },
+    {
+        "word": "え",
+        "pronunciation": {
+            "english": "e",
+            "korean": "에"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "a"
+    },
+    {
+        "word": "お",
+        "pronunciation": {
+            "english": "o",
+            "korean": "오"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "a"
+    },
+    {
+        "word": "か",
+        "pronunciation": {
+            "english": "ka",
+            "korean": "키"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "k"
+    },
+    {
+        "word": "き",
+        "pronunciation": {
+            "english": "ki",
+            "korean": "키"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "k"
+    },
+    {
+        "word": "く",
+        "pronunciation": {
+            "english": "ku",
+            "korean": "쿠"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "k"
+    },
+    {
+        "word": "け",
+        "pronunciation": {
+            "english": "ke",
+            "korean": "케"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "k"
+    },
+    {
+        "word": "こ",
+        "pronunciation": {
+            "english": "ko",
+            "korean": "코"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "k"
+    },
+    {
+        "word": "さ",
+        "pronunciation": {
+            "english": "sa",
+            "korean": "사"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "s"
+    },
+    {
+        "word": "し",
+        "pronunciation": {
+            "english": "shi",
+            "korean": "시"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "s"
+    },
+    {
+        "word": "す",
+        "pronunciation": {
+            "english": "su",
+            "korean": "스"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "s"
+    },
+    {
+        "word": "せ",
+        "pronunciation": {
+            "english": "se",
+            "korean": "세"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "s"
+    },
+    {
+        "word": "そ",
+        "pronunciation": {
+            "english": "so",
+            "korean": "소"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "s"
+    },
+    {
+        "word": "た",
+        "pronunciation": {
+            "english": "ta",
+            "korean": "타"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "t"
+    },
+    {
+        "word": "ち",
+        "pronunciation": {
+            "english": "chi",
+            "korean": "치",
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "t"
+    },
+    {
+        "word": "つ",
+        "pronunciation": {
+            "english": "tsu",
+            "korean": "츠"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "t"
+    },
+    {
+        "word": "て",
+        "pronunciation": {
+            "english": "te",
+            "korean": "테"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "t"
+    },
+    {
+        "word": "と",
+        "pronunciation": {
+            "english": "to",
+            "korean": "토"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "t"
+    },
+    {
+        "word": "な",
+        "pronunciation": {
+            "english": "na",
+            "korean": "나"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "n"
+    },
+    {
+        "word": "に",
+        "pronunciation": {
+            "english": "ni",
+            "korean": "니"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "n"
+    },
+    {
+        "word": "ぬ",
+        "pronunciation": {
+            "english": "nu",
+            "korean": "누"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "n"
+    },
+    {
+        "word": "ね",
+        "pronunciation": {
+            "english": "ne",
+            "korean": "네"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "n"
+    },
+    {
+        "word": "の",
+        "pronunciation": {
+            "english": "no",
+            "korean": "노"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "n"
+    },
+    {
+        "word": "は",
+        "pronunciation": {
+            "english": "ha",
+            "korean": "하"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "h"
+    },
+    {
+        "word": "ひ",
+        "pronunciation": {
+            "english": "hi",
+            "korean": "히"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "h"
+    },
+    {
+        "word": "ふ",
+        "pronunciation": {
+            "english": "fu",
+            "korean": "후"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "h"
+    },
+    {
+        "word": "へ",
+        "pronunciation": {
+            "english": "he",
+            "korean": "헤"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "h"
+    },
+    {
+        "word": "ほ",
+        "pronunciation": {
+            "english": "ho",
+            "korean": "호"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "h"
+    },
+    {
+        "word": "ま",
+        "pronunciation": {
+            "english": "ma",
+            "korean": "마"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "m"
+    },
+    {
+        "word": "み",
+        "pronunciation": {
+            "english": "mi",
+            "korean": "미"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "m"
+    },
+    {
+        "word": "む",
+        "pronunciation": {
+            "english": "mu",
+            "korean": "무"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "m"
+    },
+    {
+        "word": "め",
+        "pronunciation": {
+            "english": "me",
+            "korean": "메"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "m"
+    },
+    {
+        "word": "も",
+        "pronunciation": {
+            "english": "mo",
+            "korean": "모"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "m"
+    },
+    {
+        "word": "や",
+        "pronunciation": {
+            "english": "ya",
+            "korean": "야"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "y"
+    },
+    {
+        "word": "ゆ",
+        "pronunciation": {
+            "english": "yu",
+            "korean": "유"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "y"
+    },
+    {
+        "word": "よ",
+        "pronunciation": {
+            "english": "yo",
+            "korean": "요"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "y"
+    },
+    {
+        "word": "ら",
+        "pronunciation": {
+            "english": "ra",
+            "korean": "라"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "r"
+    },
+    {
+        "word": "り",
+        "pronunciation": {
+            "english": "ri",
+            "korean": "리"
+        },
+        "lottieURL": "",
+        "column": "i",
+        "row": "r"
+    },
+    {
+        "word": "る",
+        "pronunciation": {
+            "english": "ru",
+            "korean": "루"
+        },
+        "lottieURL": "",
+        "column": "u",
+        "row": "r"
+    },
+    {
+        "word": "れ",
+        "pronunciation": {
+            "english": "re",
+            "korean": "레"
+        },
+        "lottieURL": "",
+        "column": "e",
+        "row": "r"
+    },
+    {
+        "word": "ろ",
+        "pronunciation": {
+            "english": "ro",
+            "korean": "로"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "r"
+    },
+    {
+        "word": "わ",
+        "pronunciation": {
+            "english": "wa",
+            "korean": "와"
+        },
+        "lottieURL": "",
+        "column": "a",
+        "row": "w"
+    },
+    {
+        "word": "を",
+        "pronunciation": {
+            "english": "o",
+            "korean": "오"
+        },
+        "lottieURL": "",
+        "column": "o",
+        "row": "w"
+    },
+    {
+        "word": "ん",
+        "pronunciation": {
+            "english": "N",
+            "korean": "응"
+        },
+        "lottieURL": "",
+        "column": "nn",
+        "row": "nn"
+    }
+]

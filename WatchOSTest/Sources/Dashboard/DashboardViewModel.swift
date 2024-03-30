@@ -7,6 +7,7 @@
 
 import Foundation
 import Entity
+import Repository
 
 class DashboardViewModel: ObservableObject {
     @Published var data: JapaneseWord = .init(hiragana: "あ", lottieURL: "")

@@ -24,6 +24,7 @@ let project = Project(
                 .package(product: "SDWebImageLottieCoder", type: .runtime, condition: .none),
                 .package(product: "SDWebImageSwiftUI", type: .runtime, condition: .none),
                 .project(target: "Entity", path: .relativeToRoot("Modules/Entity"), condition: .none),
+                .project(target: "Repository", path: .relativeToRoot("Modules/Repository"), condition: .none),
             ]
         ),
         .target(
