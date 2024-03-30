@@ -1,21 +1,17 @@
 import SwiftUI
 import Entity
+import Dependency
+import Repository
+import HiraganaService
 
 @main
 struct WatchOSTestApp: App {
     var body: some Scene {
         WindowGroup {
-            getDashboardView()
+            HiraganaStudyBuilder.getHiraganaStudyView()
         }
     }
 
     init() {
-        print("JJIKKYU!")
-    }
-
-    private func getDashboardView() -> DashboardView {
-        let viewModel: DashboardViewModel = .init()
-        let view: DashboardView = .init(viewModel: viewModel)
-        return view
     }
 }
