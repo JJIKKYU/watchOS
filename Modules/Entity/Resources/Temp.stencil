@@ -1,0 +1,9 @@
+//
+//  Temp.swift
+//
+//  Created by {{ author }} on {{ currentDate }}
+//
+
+import UIKit
+
+public struct Temp {}

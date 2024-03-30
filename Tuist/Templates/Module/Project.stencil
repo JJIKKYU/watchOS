@@ -1,0 +1,15 @@
+import ProjectDescription
+
+let project: Project = .init(
+    name: "{{ name }}",
+    targets: [
+        .target(
+            name: "{{ name }}",
+            destinations: .watchOS,
+            product: .framework,
+            bundleId: "com.jjikkyu.Entity",
+            sources: ["Sources/**"],
+            resources: ["Resources/**"]
+        )
+    ]
+)
