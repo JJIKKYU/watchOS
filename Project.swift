@@ -23,9 +23,6 @@ let project = Project(
             dependencies: [
                 .package(product: "SDWebImageLottieCoder", type: .runtime, condition: .none),
                 .package(product: "SDWebImageSwiftUI", type: .runtime, condition: .none),
-//                .project(target: "Entity", path: .relativeToRoot("Modules/Entity"), condition: .none),
-//                .project(target: "Repository", path: .relativeToRoot("Modules/Repository"), condition: .none),
-//                .project(target: "Dependency", path: .relativeToRoot("Modules/Dependency"), condition: .none),
                 .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
             ]
         ),

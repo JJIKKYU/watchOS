@@ -94,3 +94,4 @@ Derived/
 .swiftpm/
 *.xcworkspace
 .package.resolved
+graph.png

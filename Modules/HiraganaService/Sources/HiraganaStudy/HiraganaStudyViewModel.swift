@@ -8,10 +8,10 @@
 import Foundation
 import Entity
 
-class HiraganaStudyViewModel: ObservableObject {
+public class HiraganaStudyViewModel: ObservableObject {
     var dependency: HiraganaStudyDependencyProtocol?
 
-    @Published var hiraganaModels: [HiraganaModel] = []
+    @Published public var hiraganaModels: [HiraganaModel] = []
     @Published var index: Int = 0
 
     init(

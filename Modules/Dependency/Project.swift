@@ -15,7 +15,6 @@ let project: Project = .init(
             resources: ["Resources/**"],
             dependencies: [
                 .package(product: "Swinject", type: .runtime, condition: .none),
-                .project(target: "Entity", path: .relativeToRoot("Modules/Entity"), condition: .none),
                 .project(target: "Repository", path: .relativeToRoot("Modules/Repository"), condition: .none),
             ]
         )
