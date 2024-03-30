@@ -7,7 +7,7 @@ let project: Project = .init(
             name: "{{ name }}",
             destinations: .watchOS,
             product: .framework,
-            bundleId: "com.jjikkyu.Entity",
+            bundleId: "com.jjikkyu.{{ name }}",
             sources: ["Sources/**"],
             resources: ["Resources/**"]
         )
