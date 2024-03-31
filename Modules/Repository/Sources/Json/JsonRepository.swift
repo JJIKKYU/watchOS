@@ -25,9 +25,7 @@ public struct JsonRepository: JsonRepositoryProtocol {
 
     public func fetchHiraganaDataModels() -> [HiraganaModel]? {
         // File URL 가져오기
-        guard let fileURL: URL = Bundle.main.url(forResource: "HiraganaData", withExtension: "json") else {
-            return nil
-        }
+        guard let fileURL: URL = Bundle(identifier: "com.jjikkyu.Repository")?.url(forResource: "HiraganaData", withExtension: "json") else { return nil }
 
         // Json 파일 데이터 변환
         guard let jsonData: Data = try? Data(contentsOf: fileURL),

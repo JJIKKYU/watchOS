@@ -29,10 +29,77 @@ public struct HiraganaModel: Codable {
         row: HiraganaRow
     ) {
         self.word = word
-        self.pronunciation = pronunciation
         self.lottieURL = lottieURL
+        self.pronunciation = pronunciation
         self.column = column
         self.row = row
+    }
+
+    public func getLottieURL() -> URL? {
+        // LottieURL이 비어있지 않을 경우
+        if !lottieURL.isEmpty {
+            return Bundle(identifier: "com.jjikkyu.Repository")?.url(forResource: lottieURL, withExtension: "json")
+        }
+        return nil
+    }
+
+    public func getRow() -> String {
+        switch row {
+        case .w:
+            return "あ"
+
+        case .r:
+            return "ら"
+
+        case .y:
+            return "や"
+
+        case .m:
+            return "ま"
+
+        case .h:
+            return "は"
+
+        case .n:
+            return "な"
+
+        case .t:
+            return "た"
+
+        case .s:
+            return "さ"
+
+        case .k:
+            return "か"
+
+        case .a:
+            return "あ"
+
+        case .nn:
+            return "ん"
+        }
+    }
+
+    public func getColumn() -> String {
+        switch column {
+        case .a:
+            return "あ"
+
+        case .i:
+            return "い"
+
+        case .u:
+            return "う"
+
+        case .e:
+            return "え"
+
+        case .o:
+            return "お"
+
+        case .nn:
+            return "ん"
+        }
     }
 }
 

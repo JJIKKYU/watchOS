@@ -12,6 +12,8 @@ public class HiraganaStudyViewModel: ObservableObject {
     var dependency: HiraganaStudyDependencyProtocol?
 
     @Published public var hiraganaModels: [HiraganaModel] = []
+    @Published public var isAnimating: Bool = true
+
     @Published var index: Int = 0
 
     init(

@@ -2,10 +2,7 @@ import ProjectDescription
 
 let project = Project(
     name: "WatchOSTest",
-    packages: [
-        .remote(url: "https://github.com/SDWebImage/SDWebImageLottieCoder.git", requirement: .range(from: "0.2.0", to: "0.2.0")),
-        .remote(url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git", requirement: .exact("2.0.0")),
-    ],
+    packages: [],
     targets: [
         .target(
             name: "WatchOSTest",
@@ -21,8 +18,6 @@ let project = Project(
             sources: ["WatchOSTest/Sources/**"],
             resources: ["WatchOSTest/Resources/**"],
             dependencies: [
-                .package(product: "SDWebImageLottieCoder", type: .runtime, condition: .none),
-                .package(product: "SDWebImageSwiftUI", type: .runtime, condition: .none),
                 .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
             ]
         ),
