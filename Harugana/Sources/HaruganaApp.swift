@@ -5,7 +5,7 @@ import Repository
 import HiraganaService
 
 @main
-struct WatchOSTestApp: App {
+struct HaruganaApp: App {
     var body: some Scene {
         WindowGroup {
             HiraganaStudyBuilder.getHiraganaStudyView()

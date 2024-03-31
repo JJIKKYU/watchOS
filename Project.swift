@@ -5,10 +5,51 @@ let project = Project(
     packages: [],
     targets: [
         .target(
+            name: "HaruganaApp",
+            destinations: .iOS,
+            product: .app,
+            bundleId: "com.jjikkyu.harugana",
+            infoPlist: .extendingDefault(
+                with: [
+                    "UILaunchStoryboardName": "LaunchScreen.storyboard",
+                ]
+            ),
+            sources: ["HaruganaApp/Sources/**"],
+            resources: ["HaruganaApp/Resources/**"],
+            dependencies: [],
+            settings: .settings(
+                base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
+                configurations: [],
+                defaultSettings: .recommended
+            )
+        ),
+        .target(
+            name: "HaruganaWatchKit",
+            destinations: .watchOS,
+            product: .watch2Extension,
+            bundleId: "com.jjikkyu.harugana.watchKitApp",
+            infoPlist: .extendingDefault(
+                with: [
+                     "WKWatchKitApp": .boolean(true),
+                     "WKCompanionAppBundleIdentifier": "com.jjikkyu.harugana"
+                ]
+            ),
+            sources: ["Harugana/Sources/**"],
+            resources: ["Harugana/Resources/**"],
+            dependencies: [
+                .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
+            ],
+            settings: .settings(
+                base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
+                configurations: [],
+                defaultSettings: .recommended
+            )
+        ),
+        .target(
             name: "Harugana",
             destinations: .watchOS,
             product: .app,
-            bundleId: "com.jjikkyu.harugana",
+            bundleId: "com.jjikkyu.harugana.watchKitApp",
             infoPlist: .extendingDefault(
                 with: [
                      "WKApplication": .boolean(true),
@@ -19,7 +60,12 @@ let project = Project(
             resources: ["Harugana/Resources/**"],
             dependencies: [
                 .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
-            ]
+            ],
+            settings: .settings(
+                base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
+                configurations: [],
+                defaultSettings: .recommended
+            )
         ),
         .target(
             name: "HaruganaTests",
