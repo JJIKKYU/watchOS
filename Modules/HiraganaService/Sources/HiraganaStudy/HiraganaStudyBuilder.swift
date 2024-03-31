@@ -12,7 +12,7 @@ import SwiftUI
 
 public struct HiraganaStudyBuilder {
     public static func getHiraganaStudyView() -> HiraganaStudyView {
-        let jsonRepository: JsonRepositoryProtocol? = DependencyInjector.shared
+        let jsonRepository: JsonRepositoryProtocol? = DependencyContainer.shared
             .container.resolve(JsonRepositoryProtocol.self)
 
         let dependency: HiraganaStudyDependencyProtocol = HiraganaStudyDependency(

@@ -11,15 +11,19 @@ public struct HiraganaStudyView: View {
     @StateObject var viewModel: HiraganaStudyViewModel
 
     public var body: some View {
-        VStack {
-            Text(viewModel.hiraganaModels[viewModel.index].word)
-                .padding()
-            Text(viewModel.hiraganaModels[viewModel.index].pronunciation.korean)
-                .padding()
-            Button("다음") {
-                viewModel.changeData()
-            }
+        ScrollView(.horizontal) {
+            LazyHStack(content: {
+                ForEach(viewModel.hiraganaModels, id: \.self) { model in
+                    Text("\(model.word)")
+                        .containerRelativeFrame(.horizontal)
+                        .font(.system(size: 48))
+                        .opacity(1.0)
+                }
+            })
+            .scrollTargetLayout()
         }
+        .scrollTargetBehavior(.paging)
+        .safeAreaPadding(.horizontal)
     }
 }
 

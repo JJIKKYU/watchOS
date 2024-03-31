@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Pronunciation: Codable {
+public struct Pronunciation: Codable, Hashable {
     public var english: String
     public var korean: String
 

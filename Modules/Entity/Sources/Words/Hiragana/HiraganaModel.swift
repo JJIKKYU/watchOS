@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: HiraganaModel
+
 public struct HiraganaModel: Codable {
     // 히라가나
     public var word: String
@@ -31,5 +33,25 @@ public struct HiraganaModel: Codable {
         self.lottieURL = lottieURL
         self.column = column
         self.row = row
+    }
+}
+
+// MARK: HiraganaModel Extension
+
+extension HiraganaModel: Identifiable, Equatable, Hashable {
+    public var id: String {
+        self.word
+    }
+
+    public static func == (lhs: HiraganaModel, rhs: HiraganaModel) -> Bool {
+        return lhs.word == rhs.word
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(word)
+        hasher.combine(pronunciation)
+        hasher.combine(lottieURL)
+        hasher.combine(column)
+        hasher.combine(row)
     }
 }
