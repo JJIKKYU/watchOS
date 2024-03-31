@@ -1,35 +1,35 @@
 import ProjectDescription
 
 let project = Project(
-    name: "WatchOSTest",
+    name: "Harugana",
     packages: [],
     targets: [
         .target(
-            name: "WatchOSTest",
+            name: "Harugana",
             destinations: .watchOS,
             product: .app,
-            bundleId: "com.jjikkyu.WatchOSTest",
+            bundleId: "com.jjikkyu.harugana",
             infoPlist: .extendingDefault(
                 with: [
                      "WKApplication": .boolean(true),
                      "WKCompanionAppBundleIdentifier": "com.jjikkyu"
                 ]
             ),
-            sources: ["WatchOSTest/Sources/**"],
-            resources: ["WatchOSTest/Resources/**"],
+            sources: ["Harugana/Sources/**"],
+            resources: ["Harugana/Resources/**"],
             dependencies: [
                 .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
             ]
         ),
         .target(
-            name: "WatchOSTestTests",
+            name: "HaruganaTests",
             destinations: .watchOS,
             product: .unitTests,
-            bundleId: "com.jjikkyu.WatchOSTestTests",
+            bundleId: "com.jjikkyu.HaruganaTests",
             infoPlist: .default,
-            sources: ["WatchOSTest/Tests/**"],
+            sources: ["Harugana/Tests/**"],
             resources: [],
-            dependencies: [.target(name: "WatchOSTest")]
+            dependencies: [.target(name: "Harugana")]
         ),
     ]
 )
