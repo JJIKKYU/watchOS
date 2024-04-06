@@ -19,7 +19,7 @@ let project = Project(
             sources: ["HaruganaApp/Sources/**"],
             resources: ["HaruganaApp/Resources/**"],
             dependencies: [
-                .package(product: "ComposableArchitecture", type: .runtime, condition: nil)
+                .package(product: "ComposableArchitecture", type: .runtime, condition: nil),
             ],
             settings: .settings(
                 base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
