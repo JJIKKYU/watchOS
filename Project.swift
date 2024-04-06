@@ -2,7 +2,9 @@ import ProjectDescription
 
 let project = Project(
     name: "Harugana",
-    packages: [],
+    packages: [
+        .remote(url: "https://github.com/pointfreeco/swift-composable-architecture", requirement: .upToNextMajor(from: "1.9.2"))
+    ],
     targets: [
         .target(
             name: "HaruganaApp",
@@ -16,7 +18,9 @@ let project = Project(
             ),
             sources: ["HaruganaApp/Sources/**"],
             resources: ["HaruganaApp/Resources/**"],
-            dependencies: [],
+            dependencies: [
+                .package(product: "ComposableArchitecture", type: .runtime, condition: nil)
+            ],
             settings: .settings(
                 base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
                 configurations: [],
@@ -24,10 +28,10 @@ let project = Project(
             )
         ),
         .target(
-            name: "HaruganaWatchKit",
+            name: "HaruganaWatch",
             destinations: .watchOS,
             product: .watch2Extension,
-            bundleId: "com.jjikkyu.harugana.watchKitApp",
+            bundleId: "com.jjikkyu.harugana.watchKit",
             infoPlist: .extendingDefault(
                 with: [
                      "WKWatchKitApp": .boolean(true),
@@ -45,37 +49,37 @@ let project = Project(
                 defaultSettings: .recommended
             )
         ),
-        .target(
-            name: "Harugana",
-            destinations: .watchOS,
-            product: .app,
-            bundleId: "com.jjikkyu.harugana.watchKitApp",
-            infoPlist: .extendingDefault(
-                with: [
-                     "WKApplication": .boolean(true),
-                     "WKCompanionAppBundleIdentifier": "com.jjikkyu"
-                ]
-            ),
-            sources: ["Harugana/Sources/**"],
-            resources: ["Harugana/Resources/**"],
-            dependencies: [
-                .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
-            ],
-            settings: .settings(
-                base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
-                configurations: [],
-                defaultSettings: .recommended
-            )
-        ),
-        .target(
-            name: "HaruganaTests",
-            destinations: .watchOS,
-            product: .unitTests,
-            bundleId: "com.jjikkyu.HaruganaTests",
-            infoPlist: .default,
-            sources: ["Harugana/Tests/**"],
-            resources: [],
-            dependencies: [.target(name: "Harugana")]
-        ),
+//        .target(
+//            name: "Harugana",
+//            destinations: .watchOS,
+//            product: .app,
+//            bundleId: "com.jjikkyu.harugana.watchKitApp",
+//            infoPlist: .extendingDefault(
+//                with: [
+//                     "WKApplication": .boolean(true),
+//                     "WKCompanionAppBundleIdentifier": "com.jjikkyu"
+//                ]
+//            ),
+//            sources: ["Harugana/Sources/**"],
+//            resources: ["Harugana/Resources/**"],
+//            dependencies: [
+//                .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
+//            ],
+//            settings: .settings(
+//                base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],
+//                configurations: [],
+//                defaultSettings: .recommended
+//            )
+//        ),
+//        .target(
+//            name: "HaruganaTests",
+//            destinations: .iOS,
+//            product: .unitTests,
+//            bundleId: "com.jjikkyu.HaruganaTests",
+//            infoPlist: .default,
+//            sources: ["Harugana/Tests/**"],
+//            resources: [],
+//            dependencies: [.target(name: "HaruganaApp")]
+//        ),
     ]
 )
