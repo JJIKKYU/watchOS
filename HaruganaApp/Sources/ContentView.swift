@@ -2,10 +2,10 @@ import SwiftUI
 import ComposableArchitecture
 
 public struct ContentView: View {
-    let store: StoreOf<HomeFeature>
+    @Bindable var store: StoreOf<HomeFeature>
 
     public var body: some View {
-        NavigationStack {
+        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             List {
                 Section {
                     VStack(alignment: .leading, spacing: 8, content: {
@@ -20,6 +20,8 @@ public struct ContentView: View {
                         Text("안녕하세요.")
                             .foregroundStyle(.gray)
                     })
+                    .background(.gray.opacity(0.6))
+                    .cornerRadius(8)
                 } header: {
                     Text("오늘의 단어")
                 }
@@ -27,11 +29,26 @@ public struct ContentView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
                 Section {
-                    Text("모음")
-                    Text("Text2")
-                    Text("Text3")
-                    Text("Text4")
-                    Text("Text5")
+                    NavigationLink(state: HiraganaDetailFeature.State()) {
+                        Button("あ행") {
+                            store.send(.pressedHiraganaSection("あ행"))
+                            print("あ행!")
+                        }
+                    }
+                    NavigationLink(state: HiraganaDetailFeature.State()) {
+                        Button("あ행") {
+                            print("あ행!")
+                        }
+                    }
+                    Text("か행")
+                    Text("さ행")
+                    Text("た행")
+                    Text("な행")
+                    Text("は행")
+                    Text("ま행")
+                    Text("や행")
+                    Text("ら행")
+                    Text("わ행")
                 } header: {
                     Text("히라가나")
                 }
@@ -53,6 +70,8 @@ public struct ContentView: View {
 //            }
             .navigationTitle("Harugana")
             .navigationBarTitleDisplayMode(.large)
+        } destination: { store in
+            HiraganaDetailView(store: store)
         }
     }
 }
