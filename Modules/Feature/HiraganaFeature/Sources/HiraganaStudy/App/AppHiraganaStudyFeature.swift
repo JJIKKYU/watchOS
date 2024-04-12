@@ -1,6 +1,6 @@
 //
-//  HiraganaDetailFeature.swift
-//  HaruganaApp
+//  HiraganaStudyFeature.swift
+//  HiraganaFeature
 //
 //  Created by 정진균 on 4/12/24.
 //
@@ -9,17 +9,21 @@ import Foundation
 import ComposableArchitecture
 
 @Reducer
-struct HiraganaDetailFeature {
+public struct HiraganaDetailFeature {
     @ObservableState
-    struct State: Equatable {
-        var test: String?
+    public struct State: Equatable {
+        public var test: String?
+
+        public init(test: String? = nil) {
+            self.test = test
+        }
     }
 
-    enum Action {
+    public enum Action {
         case testAction
     }
 
-    var body: some Reducer<State, Action> {
+    public var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .testAction:
@@ -28,4 +32,6 @@ struct HiraganaDetailFeature {
             }
         }
     }
+
+    public init() {}
 }

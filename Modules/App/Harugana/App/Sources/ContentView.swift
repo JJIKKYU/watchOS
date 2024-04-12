@@ -1,5 +1,6 @@
-import SwiftUI
 import ComposableArchitecture
+import HiraganaFeature
+import SwiftUI
 
 public struct ContentView: View {
     @Bindable var store: StoreOf<HomeFeature>

@@ -3,7 +3,7 @@ import ProjectDescription
 let project: Project = .init(
     name: "Harugana",
     packages: [
-        .remote(url: "https://github.com/pointfreeco/swift-composable-architecture", requirement: .upToNextMajor(from: "1.9.2"))
+        // .remote(url: "https://github.com/pointfreeco/swift-composable-architecture", requirement: .upToNextMajor(from: "1.9.2"))
     ],
     targets: [
         .target(
@@ -30,7 +30,7 @@ let project: Project = .init(
             sources: ["App/Sources/**"],
             resources: ["App/Resources/**"],
             dependencies: [
-                .package(product: "ComposableArchitecture", type: .runtime, condition: nil),
+                // .package(product: "ComposableArchitecture", type: .runtime, condition: nil),
                 .project(target: "HiraganaFeature", path: .relativeToRoot("Modules/Feature/HiraganaFeature"), condition: .none),
             ],
             settings: .settings(

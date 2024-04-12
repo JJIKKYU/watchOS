@@ -1,6 +1,6 @@
 //
-//  HiraganaDetailView.swift
-//  HaruganaApp
+//  HiraganaStudyView.swift
+//  HiraganaFeature
 //
 //  Created by 정진균 on 4/12/24.
 //
@@ -8,11 +8,15 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct HiraganaDetailView: View {
-    let store: StoreOf<HiraganaDetailFeature>
+public struct HiraganaDetailView: View {
+    public let store: StoreOf<HiraganaDetailFeature>
 
-    var body: some View {
+    public var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+
+    public init(store: StoreOf<HiraganaDetailFeature>) {
+        self.store = store
     }
 }
 
@@ -22,3 +26,4 @@ struct HiraganaDetailView: View {
     }
     return HiraganaDetailView(store: store)
 }
+

@@ -5,8 +5,9 @@
 //  Created by 정진균 on 4/6/24.
 //
 
-import Foundation
 import ComposableArchitecture
+import Foundation
+import HiraganaFeature
 
 @Reducer
 struct HomeFeature {
