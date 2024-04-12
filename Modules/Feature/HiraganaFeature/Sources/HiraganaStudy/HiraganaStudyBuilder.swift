@@ -5,7 +5,7 @@
 //  Created by 정진균 on 3/30/24.
 //
 
-import Dependency
+import DependencyContainer
 import Foundation
 import Repository
 import SDWebImage

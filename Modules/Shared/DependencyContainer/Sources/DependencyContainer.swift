@@ -15,14 +15,7 @@ public class DependencyContainer {
 
     public let container: Container
 
-    public init() {
+    private init() {
         container = Container()
-        registerDependency()
-    }
-
-    private func registerDependency() {
-        container.register(JsonRepositoryProtocol.self) { _ in
-            return JsonRepository()
-        }.inObjectScope(.container)
     }
 }

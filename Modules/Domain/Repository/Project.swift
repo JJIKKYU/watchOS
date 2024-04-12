@@ -11,7 +11,7 @@ let project: Project = .init(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .project(target: "Entity", path: .relativeToRoot("Modules/Entity"), condition: .none),
+                .project(target: "Entity", path: .relativeToRoot("Modules/Core/Entity"), condition: .none),
             ]
         )
     ]
