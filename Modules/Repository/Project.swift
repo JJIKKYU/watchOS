@@ -5,7 +5,7 @@ let project: Project = .init(
     targets: [
         .target(
             name: "Repository",
-            destinations: .watchOS,
+            destinations: [.iPhone, .iPad, .appleWatch],
             product: .framework,
             bundleId: "com.jjikkyu.Repository",
             sources: ["Sources/**"],

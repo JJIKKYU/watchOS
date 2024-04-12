@@ -20,6 +20,7 @@ let project = Project(
             resources: ["HaruganaApp/Resources/**"],
             dependencies: [
                 .package(product: "ComposableArchitecture", type: .runtime, condition: nil),
+                .project(target: "HiraganaService", path: .relativeToRoot("Modules/HiraganaService"), condition: .none),
             ],
             settings: .settings(
                 base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],

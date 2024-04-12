@@ -8,7 +8,7 @@ let project: Project = .init(
     targets: [
         .target(
             name: "Dependency",
-            destinations: .watchOS,
+            destinations: [.iPhone, .iPad, .appleWatch],
             product: .framework,
             bundleId: "com.jjikkyu.Dependency",
             sources: ["Sources/**"],
