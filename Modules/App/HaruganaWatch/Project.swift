@@ -17,7 +17,7 @@ let project: Project = .init(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .project(target: "HiraganaService", path: .relativeToRoot("Modules/Feature/HiraganaService"), condition: .none),
+                .project(target: "HiraganaFeature", path: .relativeToRoot("Modules/Feature/HiraganaFeature"), condition: .none),
             ],
             settings: .settings(
                 base: ["DEVELOPMENT_TEAM": "V237TD2AXA"],

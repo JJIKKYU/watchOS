@@ -31,6 +31,7 @@ let project: Project = .init(
             resources: ["App/Resources/**"],
             dependencies: [
                 // .package(product: "ComposableArchitecture", type: .runtime, condition: nil),
+                .external(name: "ComposableArchitecture", condition: .none),
                 .project(target: "HiraganaFeature", path: .relativeToRoot("Modules/Feature/HiraganaFeature"), condition: .none),
             ],
             settings: .settings(

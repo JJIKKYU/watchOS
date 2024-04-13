@@ -5,6 +5,12 @@ import SwiftUI
 public struct ContentView: View {
     @Bindable var store: StoreOf<HomeFeature>
 
+    init(store: StoreOf<HomeFeature>) {
+        self.store = store
+
+        store.send(.getHiraganaRows)
+    }
+
     public var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             List {
@@ -30,26 +36,13 @@ public struct ContentView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
                 Section {
-                    NavigationLink(state: HiraganaDetailFeature.State()) {
-                        Button("あ행") {
-                            store.send(.pressedHiraganaSection("あ행"))
-                            print("あ행!")
+                    ForEach(store.hiraganaRows, id: \.self) { row in
+                        NavigationLink(state: HiraganaDetailFeature.State()) {
+                            Button("\(row)행") {
+                                store.send(.pressedHiraganaSection(row))
+                            }
                         }
                     }
-                    NavigationLink(state: HiraganaDetailFeature.State()) {
-                        Button("あ행") {
-                            print("あ행!")
-                        }
-                    }
-                    Text("か행")
-                    Text("さ행")
-                    Text("た행")
-                    Text("な행")
-                    Text("は행")
-                    Text("ま행")
-                    Text("や행")
-                    Text("ら행")
-                    Text("わ행")
                 } header: {
                     Text("히라가나")
                 }

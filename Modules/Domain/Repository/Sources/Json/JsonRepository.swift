@@ -5,13 +5,28 @@
 //  Created by 정진균 on 3/30/24.
 //
 
-import Foundation
+import Dependencies
+import DependencyContainer
 import Entity
+import Foundation
 
 // MARK: - JsonRepositoryProtocol
 
 public protocol JsonRepositoryProtocol {
     func fetchHiraganaDataModels() -> [HiraganaModel]?
+}
+
+public enum JsonRepositoryProtocolKey: DependencyKey {
+    public static var liveValue: JsonRepositoryProtocol {
+        DependencyContainer.shared.container.resolve(JsonRepositoryProtocol.self)!
+    }
+}
+
+public extension DependencyValues {
+    var jsonRepositoryProtocol: JsonRepositoryProtocol {
+        get { self[JsonRepositoryProtocolKey.self] }
+        set { self[JsonRepositoryProtocolKey.self] = newValue }
+    }
 }
 
 // MARK: - JsonRepository

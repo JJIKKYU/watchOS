@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Entity
-import Repository
 import Swinject
 
 public class DependencyContainer {

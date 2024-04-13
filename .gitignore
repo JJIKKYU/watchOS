@@ -95,3 +95,4 @@ Derived/
 *.xcworkspace
 .package.resolved
 graph.png
+Tuist/Package.resolved

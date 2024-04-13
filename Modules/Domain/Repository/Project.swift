@@ -2,6 +2,8 @@ import ProjectDescription
 
 let project: Project = .init(
     name: "Repository",
+    packages: [
+    ],
     targets: [
         .target(
             name: "Repository",
@@ -11,7 +13,9 @@ let project: Project = .init(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
+                .external(name: "ComposableArchitecture", condition: .none),
                 .project(target: "Entity", path: .relativeToRoot("Modules/Core/Entity"), condition: .none),
+                .project(target: "DependencyContainer", path: .relativeToRoot("Modules/Shared/DependencyContainer"), condition: .none),
             ]
         )
     ]

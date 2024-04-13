@@ -6,8 +6,11 @@
 //
 
 import ComposableArchitecture
+import Dependencies
+import Entity
 import Foundation
 import HiraganaFeature
+import Repository
 
 @Reducer
 struct HomeFeature {
@@ -17,6 +20,7 @@ struct HomeFeature {
             return lhs.numberFact == rhs.numberFact && lhs.numberFact == rhs.numberFact
         }
         
+        var hiraganaRows: [String] = []
         var count: Int = 0
         var numberFact: String?
         @Presents var destination: Destination.State?
@@ -31,7 +35,12 @@ struct HomeFeature {
         case incrementButtonTapped
         case numberFactButtonTapped
         case numberFactResponse(String)
+
+        case getHiraganaRows
+        case hiraganaRowsResponse(TaskResult<[String]>)
     }
+
+    @Dependency(\.jsonRepositoryProtocol) var jsonRepositoryProtocol
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -51,6 +60,8 @@ struct HomeFeature {
                 return .none
 
             case .path:
+                let data = jsonRepositoryProtocol.fetchHiraganaDataModels()
+                
                 return .none
 
             case .incrementButtonTapped:
@@ -70,6 +81,21 @@ struct HomeFeature {
 
             case let .numberFactResponse(fact):
                 state.numberFact = fact
+                return .none
+
+            case .getHiraganaRows:
+                return .run { send in
+                    guard let models: [HiraganaModel] = jsonRepositoryProtocol.fetchHiraganaDataModels() else { return }
+                    let rows: [String] = Set(models.map { $0.row.getHiragana() }).map { $0 }
+                    await send(.hiraganaRowsResponse(.success(rows)))
+                }
+
+            case let .hiraganaRowsResponse(.success(response)):
+                state.hiraganaRows = response
+                return .none
+
+            case let .hiraganaRowsResponse(.failure(error)):
+                state.hiraganaRows = []
                 return .none
             }
         }

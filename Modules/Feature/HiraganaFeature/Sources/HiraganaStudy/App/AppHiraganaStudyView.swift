@@ -21,9 +21,13 @@ public struct HiraganaDetailView: View {
 }
 
 #Preview {
-    let store = Store(initialState: HiraganaDetailFeature.State()) {
+    let store = Store(
+        initialState: HiraganaDetailFeature.State()
+    ) {
         HiraganaDetailFeature()
     }
-    return HiraganaDetailView(store: store)
+    return HiraganaDetailView(
+        store: store
+    )
 }
 

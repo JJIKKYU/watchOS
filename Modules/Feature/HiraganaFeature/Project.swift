@@ -3,9 +3,6 @@ import ProjectDescription
 let project: Project = .init(
     name: "HiraganaFeature",
     packages: [
-        .remote(url: "https://github.com/SDWebImage/SDWebImageLottieCoder.git", requirement: .range(from: "0.2.0", to: "0.2.0")),
-        .remote(url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git", requirement: .exact("2.0.0")),
-        .remote(url: "https://github.com/pointfreeco/swift-composable-architecture", requirement: .upToNextMajor(from: "1.9.2"))
     ],
     targets: [
         .target(
@@ -16,10 +13,11 @@ let project: Project = .init(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .package(product: "SDWebImageLottieCoder", type: .runtime, condition: .none),
-                .package(product: "SDWebImageSwiftUI", type: .runtime, condition: .none),
-                .package(product: "ComposableArchitecture", type: .runtime, condition: nil),
+                .external(name: "ComposableArchitecture", condition: .none),
+                .external(name: "SDWebImageLottieCoder", condition: .none),
+                .external(name: "SDWebImageSwiftUI", condition: .none),
                 .project(target: "DependencyContainer", path: .relativeToRoot("Modules/Shared/DependencyContainer"), condition: .none),
+                .project(target: "Repository", path: .relativeToRoot("Modules/Domain/Repository"), condition: .none),
             ]
         )
     ]
