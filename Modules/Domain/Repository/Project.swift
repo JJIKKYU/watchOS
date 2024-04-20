@@ -14,6 +14,7 @@ let project: Project = .init(
             resources: ["Resources/**"],
             dependencies: [
                 .external(name: "ComposableArchitecture", condition: .none),
+                .external(name: "OpenAI", condition: .none),
                 .project(target: "Entity", path: .relativeToRoot("Modules/Core/Entity"), condition: .none),
                 .project(target: "DependencyContainer", path: .relativeToRoot("Modules/Shared/DependencyContainer"), condition: .none),
             ]

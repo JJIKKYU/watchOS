@@ -18,7 +18,7 @@ public struct HiraganaStudyBuilder {
         let lottieCoder = SDImageLottieCoder.shared
         SDImageCodersManager.shared.addCoder(lottieCoder)
 
-        let jsonRepository: JsonRepositoryProtocol? = DependencyContainer.shared
+        let jsonRepository: JsonRepositoryProtocol? = AppContainer
             .container.resolve(JsonRepositoryProtocol.self)
 
         let dependency: HiraganaStudyDependencyProtocol = HiraganaStudyDependency(

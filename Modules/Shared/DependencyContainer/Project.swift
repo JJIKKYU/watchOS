@@ -13,7 +13,8 @@ let project: Project = .init(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .external(name: "Swinject", condition: .none)
+                .external(name: "Swinject", condition: .none),
+                .external(name: "SwinjectAutoregistration", condition: .none)
             ]
         )
     ]

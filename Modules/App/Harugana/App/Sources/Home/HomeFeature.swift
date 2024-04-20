@@ -17,30 +17,28 @@ struct HomeFeature {
     @ObservableState
     struct State: Equatable {
         static func == (lhs: HomeFeature.State, rhs: HomeFeature.State) -> Bool {
-            return lhs.numberFact == rhs.numberFact && lhs.numberFact == rhs.numberFact
+            return lhs.dailyWord == rhs.dailyWord && lhs.hiraganaRows == rhs.hiraganaRows
         }
         
         var hiraganaRows: [String] = []
-        var count: Int = 0
-        var numberFact: String?
-        @Presents var destination: Destination.State?
-        var path = StackState<HiraganaDetailFeature.State>()
+        var dailyWord: DailyWord?
+
+        var path: StackState<HomeFeature.Path.State> = .init()
     }
 
     enum Action {
         case pressedHiraganaSection(String)
-        case destination(PresentationAction<Destination.Action>)
-        case path(StackAction<HiraganaDetailFeature.State, HiraganaDetailFeature.Action>)
-        case decrementButtonTapped
-        case incrementButtonTapped
-        case numberFactButtonTapped
-        case numberFactResponse(String)
+        case path(StackAction<Path.State, Path.Action>)
 
         case getHiraganaRows
         case hiraganaRowsResponse(TaskResult<[String]>)
+
+        case getDailyWord
+        case dailyWordResponse(TaskResult<DailyWord>)
     }
 
     @Dependency(\.jsonRepositoryProtocol) var jsonRepositoryProtocol
+    @Dependency(\.openAIRepositoryProtocol) var openAIRepositoryProtocol
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -49,39 +47,20 @@ struct HomeFeature {
                 print("PressedHiraganaSection! row = \(row)")
                 return .none
 
-            case .decrementButtonTapped:
-                state.count -= 1
-                return .none
+            case let .path(action):
+                switch action {
+                case .element(id: _, action: .pushHiraganaDetailFeature(.testAction)):
+                    print("!")
+                    return .none
 
-            case let .destination(.presented(.prssed(.testAction))):
-                return .none
+                case let .popFrom(id: id):
+                    print("popFrom :: id = \(id)")
+                    return .none
 
-            case let .destination(.dismiss):
-                return .none
-
-            case .path:
-                let data = jsonRepositoryProtocol.fetchHiraganaDataModels()
-                
-                return .none
-
-            case .incrementButtonTapped:
-                state.count += 1
-                return .none
-
-            case .numberFactButtonTapped:
-                return .run { [count = state.count] send in
-                    let (data, _) = try await URLSession.shared.data(
-                        from: URL(string: "http://numbersapi.com/\(count)/trivia")!
-                    )
-
-                    await send(
-                        .numberFactResponse(String(decoding: data, as: UTF8.self)
-                        ))
+                case let .push(id: id, state: state):
+                    print("push :: id = \(id), state = \(state)")
+                    return .none
                 }
-
-            case let .numberFactResponse(fact):
-                state.numberFact = fact
-                return .none
 
             case .getHiraganaRows:
                 return .run { send in
@@ -97,11 +76,23 @@ struct HomeFeature {
             case let .hiraganaRowsResponse(.failure(error)):
                 state.hiraganaRows = []
                 return .none
+
+            case .getDailyWord:
+                return .run { send in
+                    guard let model: DailyWord = await openAIRepositoryProtocol.getDailyWord() else { return }
+                    await send(.dailyWordResponse(.success(model)))
+                }
+
+            case let .dailyWordResponse(.success(response)):
+                state.dailyWord = response
+                return .none
+
+            case let .dailyWordResponse(.failure(error)):
+                return .none
             }
         }
-        .ifLet(\.$destination, action: \.destination)
         .forEach(\.path, action: \.path) {
-            HiraganaDetailFeature()
+            Path()
         }
     }
 }
@@ -110,7 +101,20 @@ struct HomeFeature {
 
 extension HomeFeature {
     @Reducer
-    enum Destination {
-        case prssed(HiraganaDetailFeature)
+    struct Path {
+        @ObservableState
+        enum State: Equatable {
+            case hiraganaDetailFeature(HiraganaDetailFeature.State = .init())
+        }
+
+        enum Action {
+            case pushHiraganaDetailFeature(HiraganaDetailFeature.Action)
+        }
+
+        var body: some ReducerOf<Self> {
+            Scope(state: \.hiraganaDetailFeature, action: \.pushHiraganaDetailFeature) {
+                HiraganaDetailFeature()
+            }
+        }
     }
 }
