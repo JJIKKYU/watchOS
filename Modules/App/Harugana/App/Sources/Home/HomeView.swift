@@ -2,10 +2,10 @@ import ComposableArchitecture
 import HiraganaFeature
 import SwiftUI
 
-public struct HomeView: View {
-    @Bindable var store: StoreOf<HomeFeature>
+struct HomeView: View {
+    @State var store: StoreOf<HomeFeature>
 
-    init(store: StoreOf<HomeFeature>) {
+    public init(store: StoreOf<HomeFeature>) {
         self.store = store
 
         store.send(.getHiraganaRows)
@@ -38,10 +38,7 @@ public struct HomeView: View {
                 } header: {
                     Text("오늘의 단어")
                 }
-                .transition(.move(edge: .leading))
                 .listStyle(.sidebar)
-//                    .listRowBackground(Color.clear)
-//                    .listRowInsets(EdgeInsets())
 
                 Section {
                     ForEach(store.hiraganaRows, id: \.self) { row in

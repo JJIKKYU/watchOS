@@ -31,11 +31,20 @@ extension Harugana {
 
     // View, Feature inject
     func injectScene(_ container: Container = AppContainer.container) {
+        // HomeFeature, HomeView
         container.register(StoreOf<HomeFeature>.self) { r in
             .init(initialState: HomeFeature.State()) {
                 HomeFeature()
             }
         }
         container.autoregister(HomeView.self, initializer: HomeView.init)
+
+        // HiraganaDetailFeature, HiraganaDetailView
+        container.register(StoreOf<HiraganaDetailFeature>.self) { _ in
+            .init(initialState: HiraganaDetailFeature.State()) {
+                HiraganaDetailFeature()
+            }
+        }
+        container.autoregister(HiraganaDetailView.self, initializer: HiraganaDetailView.init)
     }
 }

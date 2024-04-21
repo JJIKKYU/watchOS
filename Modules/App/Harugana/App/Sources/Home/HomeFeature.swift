@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import Dependencies
+import DependencyContainer
 import Entity
 import Foundation
 import HiraganaFeature
@@ -49,7 +50,7 @@ struct HomeFeature {
 
             case let .path(action):
                 switch action {
-                case .element(id: _, action: .pushHiraganaDetailFeature(.testAction)):
+                case .element(id: _, action: .pushHiraganaDetailFeature):
                     print("!")
                     return .none
 
@@ -113,7 +114,7 @@ extension HomeFeature {
 
         var body: some ReducerOf<Self> {
             Scope(state: \.hiraganaDetailFeature, action: \.pushHiraganaDetailFeature) {
-                HiraganaDetailFeature()
+                AppContainer.resolve(HiraganaDetailFeature.self)!
             }
         }
     }
