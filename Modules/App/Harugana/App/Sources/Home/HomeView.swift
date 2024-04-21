@@ -33,8 +33,6 @@ struct HomeView: View {
                     } else {
                         ProgressView()
                     }
-                    // .background(.gray.opacity(0.6))
-                    // .cornerRadius(8)
                 } header: {
                     Text("오늘의 단어")
                 }
@@ -43,10 +41,7 @@ struct HomeView: View {
                 Section {
                     ForEach(store.hiraganaRows, id: \.self) { row in
                         NavigationLink(state: HomeFeature.Path.State.hiraganaDetailFeature()) {
-                            Button("\(row)행") {
-                                print("pressedHiraganaSection! -2")
-                                // store.send(.pressedHiraganaSection(row))
-                            }
+                            Text("\(row)행")
                         }
                     }
                 } header: {

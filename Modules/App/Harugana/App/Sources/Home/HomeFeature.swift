@@ -28,7 +28,6 @@ struct HomeFeature {
     }
 
     enum Action {
-        case pressedHiraganaSection(String)
         case path(StackAction<Path.State, Path.Action>)
 
         case getHiraganaRows
@@ -44,10 +43,6 @@ struct HomeFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-            case let .pressedHiraganaSection(row):
-                print("PressedHiraganaSection! row = \(row)")
-                return .none
-
             case let .path(action):
                 switch action {
                 case .element(id: _, action: .pushHiraganaDetailFeature):
@@ -114,7 +109,7 @@ extension HomeFeature {
 
         var body: some ReducerOf<Self> {
             Scope(state: \.hiraganaDetailFeature, action: \.pushHiraganaDetailFeature) {
-                AppContainer.resolve(HiraganaDetailFeature.self)!
+                AppContainer.resolve(HiraganaDetailFeature.self)
             }
         }
     }
