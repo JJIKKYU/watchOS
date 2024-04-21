@@ -5,8 +5,8 @@
 //  Created by 정진균 on 4/12/24.
 //
 
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 @Reducer
 public struct HiraganaDetailFeature {
