@@ -1,22 +1,21 @@
 //
-//  AppHiraganaStudyFeature.swift
+//  HiraganaStudyFeature.swift
 //  HiraganaFeature
 //
-//  Created by 정진균 on 4/27/24.
+//  Created by 정진균 on 4/12/24.
 //
 
 import ComposableArchitecture
-import Entity
 import Foundation
 
 @Reducer
-public struct AppHiraganaStudyFeature {
+public struct HiraganaWritingFeature {
     @ObservableState
     public struct State: Equatable {
-        public var selectedHiragana: String?
+        public var test: String?
 
-        public init(selectedHiragana: String? = nil) {
-            self.selectedHiragana = selectedHiragana
+        public init(test: String? = nil) {
+            self.test = test
         }
     }
 
@@ -28,14 +27,11 @@ public struct AppHiraganaStudyFeature {
         Reduce { state, action in
             switch action {
             case .testAction:
-                print("testAction!")
+                print("TestAction!")
                 return .none
             }
         }
     }
 
-    public init() {
-        print("AppHiraganaStudyFeature :: init!")
-    }
+    public init() {}
 }
-

@@ -40,11 +40,19 @@ extension Harugana {
         container.autoregister(HomeView.self, initializer: HomeView.init)
 
         // HiraganaDetailFeature, HiraganaDetailView
-        container.register(StoreOf<HiraganaDetailFeature>.self) { _ in
-            .init(initialState: HiraganaDetailFeature.State()) {
-                HiraganaDetailFeature()
+        container.register(StoreOf<HiraganaWritingFeature>.self) { _ in
+            .init(initialState: HiraganaWritingFeature.State()) {
+                HiraganaWritingFeature()
             }
         }
-        container.autoregister(HiraganaDetailView.self, initializer: HiraganaDetailView.init)
+        container.autoregister(HiraganaWritingView.self, initializer: HiraganaWritingView.init)
+
+        // HiraganaStudyFeature, HiraganaStudyView
+        container.register(StoreOf<AppHiraganaStudyFeature>.self) { _ in
+            .init(initialState: AppHiraganaStudyFeature.State()) {
+                AppHiraganaStudyFeature()
+            }
+        }
+        container.autoregister(AppHiraganaStudyView.self, initializer: AppHiraganaStudyView.init)
     }
 }

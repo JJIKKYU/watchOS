@@ -18,12 +18,14 @@ struct HomeFeature {
     @ObservableState
     struct State: Equatable {
         static func == (lhs: HomeFeature.State, rhs: HomeFeature.State) -> Bool {
-            return lhs.dailyWord == rhs.dailyWord && lhs.hiraganaRows == rhs.hiraganaRows
+            return lhs.dailyWord == rhs.dailyWord && lhs.hiraganaRowModels == rhs.hiraganaRowModels
         }
         
+        var hiraganaRowModels: [HiraganaModel] = []
         var hiraganaRows: [String] = []
         var dailyWord: DailyWord?
 
+        // var hiraganaStudyFeature: AppHiraganaStudyFeature.State?
         var path: StackState<HomeFeature.Path.State> = .init()
     }
 
@@ -31,7 +33,7 @@ struct HomeFeature {
         case path(StackAction<Path.State, Path.Action>)
 
         case getHiraganaRows
-        case hiraganaRowsResponse(TaskResult<[String]>)
+        case hiraganaRowsResponse(TaskResult<(hiraganaModels: [HiraganaModel], hiraganaRows: [String])>)
 
         case getDailyWord
         case dailyWordResponse(TaskResult<DailyWord>)
@@ -45,7 +47,11 @@ struct HomeFeature {
             switch action {
             case let .path(action):
                 switch action {
-                case .element(id: _, action: .pushHiraganaDetailFeature):
+                case .element(id: _, action: .pushHiraganaStudyFeature(.testAction)):
+                    print("testAction!")
+                    return .none
+
+                case .element(id: _, action: .pushHiraganaStudyFeature):
                     print("!")
                     return .none
 
@@ -53,24 +59,29 @@ struct HomeFeature {
                     print("popFrom :: id = \(id)")
                     return .none
 
-                case let .push(id: id, state: state):
-                    print("push :: id = \(id), state = \(state)")
+                case let .push(id, state):
+                    print("push :: id = \(id), state = \(state), \(state)")
                     return .none
                 }
 
             case .getHiraganaRows:
                 return .run { send in
-                    guard let models: [HiraganaModel] = jsonRepositoryProtocol.fetchHiraganaDataModels() else { return }
+                    guard let models: [HiraganaModel] = jsonRepositoryProtocol.fetchHiraganaDataModels() else {
+                        await send(.hiraganaRowsResponse(.failure(NSError()) ))
+                        return
+                    }
                     let rows: [String] = Set(models.map { $0.row.getHiragana() }).map { $0 }
-                    await send(.hiraganaRowsResponse(.success(rows)))
+                    await send(.hiraganaRowsResponse(.success((models, rows))))
+//                    await send(.hiraganaRowsResponse(.success(rows)))
                 }
 
             case let .hiraganaRowsResponse(.success(response)):
-                state.hiraganaRows = response
+                state.hiraganaRowModels = response.hiraganaModels
+                state.hiraganaRows = response.hiraganaRows
                 return .none
 
             case let .hiraganaRowsResponse(.failure(error)):
-                state.hiraganaRows = []
+                state.hiraganaRowModels = []
                 return .none
 
             case .getDailyWord:
@@ -98,18 +109,20 @@ struct HomeFeature {
 extension HomeFeature {
     @Reducer
     struct Path {
+        var hiraganaStudyFeatureState = AppContainer.resolve(AppHiraganaStudyFeature.self)
+
         @ObservableState
         enum State: Equatable {
-            case hiraganaDetailFeature(HiraganaDetailFeature.State = .init())
+            case hiraganaStudyFeature(AppHiraganaStudyFeature.State = .init())
         }
 
         enum Action {
-            case pushHiraganaDetailFeature(HiraganaDetailFeature.Action)
+            case pushHiraganaStudyFeature(AppHiraganaStudyFeature.Action)
         }
 
         var body: some ReducerOf<Self> {
-            Scope(state: \.hiraganaDetailFeature, action: \.pushHiraganaDetailFeature) {
-                AppContainer.resolve(HiraganaDetailFeature.self)
+            Scope(state: \.hiraganaStudyFeature, action: \.pushHiraganaStudyFeature) {
+                AppContainer.resolve(AppHiraganaStudyFeature.self)
             }
         }
     }

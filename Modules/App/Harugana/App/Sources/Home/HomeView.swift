@@ -1,6 +1,8 @@
 import ComposableArchitecture
 import HiraganaFeature
 import SwiftUI
+import DependencyContainer
+import Entity
 
 struct HomeView: View {
     @State var store: StoreOf<HomeFeature>
@@ -39,9 +41,17 @@ struct HomeView: View {
                 .listStyle(.sidebar)
 
                 Section {
-                    ForEach(store.hiraganaRows, id: \.self) { row in
-                        NavigationLink(state: HomeFeature.Path.State.hiraganaDetailFeature()) {
-                            Text("\(row)행")
+                    ForEach(store.hiraganaRows, id: \.self) { (row: String) in
+                        NavigationLink(
+                            state: HomeFeature.Path.State.hiraganaStudyFeature(
+                                .init(
+                                    selectedHiragana: row
+                                )
+                            )
+                        ) {
+                            Text(
+                                "\(row)행"
+                            )
                         }
                     }
                 } header: {
@@ -52,9 +62,9 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
         } destination: { (store: StoreOf<HomeFeature.Path>) in
             switch store.state {
-            case .hiraganaDetailFeature:
-                if let store = store.scope(state: \.hiraganaDetailFeature, action: \.pushHiraganaDetailFeature) {
-                    HiraganaDetailView(store: store)
+            case .hiraganaStudyFeature:
+                if let store = store.scope(state: \.hiraganaStudyFeature, action: \.pushHiraganaStudyFeature) {
+                    AppHiraganaStudyView(store: store)
                 }
             }
         }
